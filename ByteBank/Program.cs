@@ -10,9 +10,18 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            ContaCorrente conta = new ContaCorrente(867, 867951);
-
-            Console.WriteLine(ContaCorrente.TaxaOperacao);
+            try
+            {
+                ContaCorrente conta = new ContaCorrente(123, 155);
+                Console.WriteLine(ContaCorrente.TaxaOperacao);
+            } catch(ArgumentException e)
+            {
+                Console.WriteLine("Ocorreu um erro");
+                Console.WriteLine(e.Message);
+            } catch (DivideByZeroException e)
+            {
+                Console.WriteLine("A quantidade de contas era zero, a taxa é integra: 30,00");
+            }
 
             Console.ReadLine();
         }
